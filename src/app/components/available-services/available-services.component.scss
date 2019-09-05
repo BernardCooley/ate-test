@@ -1,0 +1,19 @@
+.servicesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+
+    mat-card {
+        width: 250px;
+        margin: 10px;
+        height: 400px;
+
+        button {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}

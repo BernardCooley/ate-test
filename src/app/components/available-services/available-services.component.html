@@ -1,0 +1,16 @@
+<div class="servicesContainer">
+    <div *ngFor="let card of serviceCardDetails; let i = index">
+        <mat-card class="">
+            <mat-card-header>
+                <div mat-card-avatar class=""></div>
+                <mat-card-title>{{card.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="card.imageUrl" alt="{{card.imageAlt}}">
+            <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button (click)="openBookingDialog(card.key)">BOOK</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

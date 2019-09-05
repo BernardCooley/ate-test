@@ -1,0 +1,7 @@
+<div class="" formGroup="group">
+    <mat-radio-group class="radioButtons" formControlName="config.name">
+        <mat-radio-button class="radioButton" *ngFor="let option of config.options" [value]="option.value">
+            {{option.name}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div>
