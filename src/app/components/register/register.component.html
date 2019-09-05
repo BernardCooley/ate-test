@@ -2,10 +2,10 @@
     <form name="registerForm" novalidate autocomplete="off" [formGroup]='registerForm' (submit)='register()'>
 
         <mat-form-field class="">
-            <input matInput #email class="form-control" focus="true" type="text" name="email" required formControlName='email' placeholder="Email">
+            <input matInput #email class="form-control" focus="true" type="text" name="email" required [formControlName]='email' placeholder="Email">
         </mat-form-field>
         <mat-form-field class="">
-            <input matInput #password class="form-control" type="password" name="password" required formControlName='password' placeholder="Password">
+            <input matInput #password class="form-control" type="password" name="password" required [formControlName]='password' placeholder="Password">
         </mat-form-field>
         <button mat-button type="submit">Register</button>
     </form>

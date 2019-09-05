@@ -30,7 +30,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { DateComponent } from './fields/date/date.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from './environments/environment';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 export const firestoreConfig = environment.firestore;
@@ -85,7 +85,8 @@ const appRoutes: Routes = [
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     UserService, 
