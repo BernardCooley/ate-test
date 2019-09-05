@@ -227,11 +227,15 @@ var formConfig = {
     }]
 }
 
-db.collection("formConfig").add({
-    formConfig: formConfig
-}).then(function (docRef) {
-    console.log("Document written with ID: ", docRef.id);
+Object.keys(formConfig).forEach(configKey => {
+
+        db.collection('formConfigTest').doc(configKey).set({
+            fields: formConfig[configKey]
+        }, {merge: true}).then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
+
 })
-.catch(function (error) {
-    console.error("Error adding document: ", error);
-});

@@ -8,15 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class DynamicFormService {
   bookingEnquiries: AngularFireList<any[]>;
-  formDataCollection: AngularFirestoreCollection<any>;
   formConfig;
 
 
   constructor(private _afs: AngularFirestore, private _af: AngularFireDatabase) {}
 
-  getFormConfig(): Observable<any> {
-    this.formDataCollection = this._afs.collection('formConfig');
-    return this.formDataCollection.valueChanges();
+  getFormConfig(formName) {
+    return this._afs.collection('formConfigTest').doc(formName).get();
   }
 
   submitBookingEnquiry(formData) {

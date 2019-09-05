@@ -1,7 +1,9 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DynamicFormService } from '../../services/dynamic-form-service/dynamic-form.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-booking-modal',
@@ -9,16 +11,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./booking-modal.component.scss']
 })
 export class BookingModalComponent implements OnInit {
-
   formGroup;
   form: FormGroup;
   config: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private _dynamicFormService: DynamicFormService) {
-    this._dynamicFormService.getFormConfig().subscribe(data => {
-      this.config = data[0].formConfig[this.data];
+  constructor(private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: any, private _dynamicFormService: DynamicFormService, private _snackBar: MatSnackBar, private dialog: MatDialog) {
+    this.data.length > 0 ? this._dynamicFormService.getFormConfig(data).subscribe(returnedData => {
+      this.config = returnedData.data().fields;
       this.config ? this.createFormGroup(this.config) : null;
-    });
+    }) : null;
   }
 
   createFormGroup(config) {
@@ -29,8 +30,17 @@ export class BookingModalComponent implements OnInit {
 
   submitForm(formData) {
     // Form only returning one field's data. Tried to debug, but was taking too long.
-    this._dynamicFormService.submitBookingEnquiry(formData);
+    this._dynamicFormService.submitBookingEnquiry(formData).then(() => {
+      this.openSnackBar('Query submitted', '');
+      this.dialog.closeAll();
+    });
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }  
 
   ngOnInit() {
 
