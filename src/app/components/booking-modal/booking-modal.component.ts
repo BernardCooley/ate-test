@@ -24,12 +24,13 @@ export class BookingModalComponent implements OnInit {
 
   createFormGroup(config) {
     this.formGroup = this.formBuilder.group({});
-    config.forEach(control => this.formGroup.addControl(control.name, this.formBuilder.control('')));
+    config.forEach(control => {
+      this.formGroup.addControl(control.key, this.formBuilder.control(''))
+    });
     this.form = this.formGroup;
   }
 
   submitForm(formData) {
-    // Form only returning one field's data. Tried to debug, but was taking too long.
     this._dynamicFormService.submitBookingEnquiry(formData).then(() => {
       this.openSnackBar('Query submitted', '');
       this.dialog.closeAll();
