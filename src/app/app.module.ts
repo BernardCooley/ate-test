@@ -14,7 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatCardModule, MatCardTitle } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { AvailableServicesComponent } from './components/available-services/available-services.component';
 import { BookingModalComponent } from './components/booking-modal/booking-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -81,7 +81,6 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    MatCardTitle,
     MatDialogModule,
     MatRadioModule,
     MatDatepickerModule,

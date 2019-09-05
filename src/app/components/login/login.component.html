@@ -1,5 +1,5 @@
 <div class="formContainer">
-    <form name="loginForm" novalidate autocomplete="off" formGroup='loginForm' (submit)='login()'>
+    <form name="loginForm" novalidate autocomplete="off" [formGroup]='loginForm' (submit)='login()'>
         <mat-form-field class="">
             <input matInput #email class="form-control" focus="true" type="text" name="email" required formControlName='email' placeholder="Email">
         </mat-form-field>

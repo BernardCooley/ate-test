@@ -1,5 +1,5 @@
-<div class="" formGroup="group">
+<div class="" [formGroup]="group">
     <mat-form-field class="">
-        <input matInput #email class="" focus="true" type="text" name="email" required placeholder="{{config.placeholder}}" formControlName="config.name">
+        <input matInput #email class="" focus="true" type="text" name="email" required placeholder="{{config.placeholder}}" [formControlName]="config.name">
     </mat-form-field>
 </div>
