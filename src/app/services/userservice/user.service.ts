@@ -23,12 +23,12 @@ export class UserService {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
 
       this.store.dispatch(
-        AuthActions.userID({
+        AuthActions.getUserID({
           userID: this.afAuth.auth.currentUser.uid
         })
       );
       this.store.dispatch(
-        AuthActions.emailAddress({
+        AuthActions.getUserEmailAddress({
           emailAddress: this.afAuth.auth.currentUser.email
         })
       );

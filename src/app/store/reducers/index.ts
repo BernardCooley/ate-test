@@ -7,8 +7,8 @@ export interface State {
   authState: AuthState
 }
 
-export const reducers: ActionReducerMap<AuthState> = {
-  authReducer: authReducer;
+export const reducers: ActionReducerMap<State> = {
+  authState: authReducer
 };
 
 

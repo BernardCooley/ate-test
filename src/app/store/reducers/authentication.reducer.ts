@@ -2,20 +2,18 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as AuthenticationActions from './../actions/autnetication.actions';
 
 export interface AuthState {
-    userID?: string;
+    userID: string;
     emailAddress: string;
 }
 
 export const initialState: AuthState = {
+    userID: null,
     emailAddress: null
 }
 
 export const authReducer = createReducer(initialState,
     on(AuthenticationActions.getUserID,
-        (state, action) => ({...state, userID: action.userID})),
+        (state, {userID}) => ({...state, userID: userID})),
     on(AuthenticationActions.getUserEmailAddress,
-        (state, action) => ({...state, emailAddress: action.emailAddress}))
+        (state, {emailAddress}) => ({...state, emailAddress: emailAddress}))
 );
-
-// export const getUserID = (state: AuthState) => state.userID;
-// export const getUserEmailAddress = (state: AuthState) => state.emailAddress;
