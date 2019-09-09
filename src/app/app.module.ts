@@ -32,6 +32,11 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from './environments/environment';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './reducers';
+
+
 
 
 export const firestoreConfig = environment.firestore;
@@ -88,7 +93,18 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   providers: [
     UserService, 
