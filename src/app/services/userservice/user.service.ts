@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../store/actions/autnetication.actions';
-import { State } from '../../store/reducers';
+import { State } from '../../store/state';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +21,9 @@ export class UserService {
 
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
-
       this.store.dispatch(
-        AuthActions.getUserID({
-          userID: this.afAuth.auth.currentUser.uid
-        })
-      );
-      this.store.dispatch(
-        AuthActions.getUserEmailAddress({
+        AuthActions.getUserDetails({
+          userID: this.afAuth.auth.currentUser.uid,
           emailAddress: this.afAuth.auth.currentUser.email
         })
       );

@@ -29,14 +29,12 @@ import { ButtonComponent } from './fields/button/button.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { DateComponent } from './fields/date/date.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { environment } from './environments/environment';
+import { environment } from './../environments/environment';
 import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './reducers';
-
-
+import { reducers, metaReducers } from './reducers/index';
 
 
 export const firestoreConfig = environment.firestore;
@@ -94,7 +92,13 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     MatSnackBarModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     })
