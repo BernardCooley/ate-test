@@ -5,7 +5,7 @@ import { State } from '../state';
 
 
 export const reducers: ActionReducerMap<State, Action> = {
-  authState: fromAuth.authReducer
+  authState: fromAuth.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
