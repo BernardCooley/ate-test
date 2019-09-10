@@ -4,6 +4,6 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-    userID: 'dgngdng',
-    emailAddress: 'fbdbdgn'
+    userID: null,
+    emailAddress: null
 }

@@ -6,3 +6,4 @@ export const authReducer = createReducer(authState.initialState,
     on(AuthenticationActions.getUserDetails,
         (state, Action) => ({...state, userID: Action.userID, emailAddress: Action.emailAddress}))
 );
+

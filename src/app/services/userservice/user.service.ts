@@ -21,12 +21,7 @@ export class UserService {
 
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
-      this.store.dispatch(
-        AuthActions.getUserDetails({
-          userID: this.afAuth.auth.currentUser.uid,
-          emailAddress: this.afAuth.auth.currentUser.email
-        })
-      );
+      this.getUserDetails();
 
       this.router.navigate(['/home']);
     });
@@ -42,5 +37,15 @@ export class UserService {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(() => {
       this.router.navigate(['/home']);
     })
+  }
+
+  getUserDetails() {
+    this.afAuth.auth.currentUser ? 
+    this.store.dispatch(
+      AuthActions.getUserDetails({
+        userID: this.afAuth.auth.currentUser.uid,
+        emailAddress: this.afAuth.auth.currentUser.email
+      })
+    ) : null;
   }
 }

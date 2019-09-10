@@ -34,7 +34,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/dat
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './reducers/index';
+import { reducers, metaReducers } from './store/reducers';
 
 
 export const firestoreConfig = environment.firestore;

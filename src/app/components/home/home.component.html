@@ -1,7 +1,10 @@
+<div class="userDetails" *ngIf="userID">
+    <div class="userID">User ID: {{userID}}</div>
+    <div class="emailAddress">Email address: {{emailAddress}}</div>
+</div>
+
 <app-available-services></app-available-services>
 
 <button class="logoutBtn" mat-button (click)="logout()">Log out</button>
-
-<div>{{userID}}</div>
 
 <app-booking-modal></app-booking-modal>
